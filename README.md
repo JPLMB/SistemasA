@@ -9,4 +9,4 @@ Quatro plataformas, o megaman consegue pular de uma para outra. Reinicia a fase 
 
 Semana 3:
 
-Inimigos simples, HUD, Completar a fase.
+Inimigos simples, HUD, Completar layout da fase.
