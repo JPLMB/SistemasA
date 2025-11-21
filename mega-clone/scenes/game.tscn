@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://mxsuarg80afs"]
+[gd_scene load_steps=4 format=3 uid="uid://mxsuarg80afs"]
 
 [ext_resource type="PackedScene" uid="uid://u6jykpg53s1i" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cnm7yd3m0pkba" path="res://scenes/level.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bewovneey72g7" path="res://scenes/killzone.tscn" id="2_lnu2h"]
 
 [node name="Game" type="Node2D"]
 
 [node name="levelDebug" parent="." instance=ExtResource("1_yqjtg")]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-5, -23)
+position = Vector2(-54, -159)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 limit_left = -255
 limit_bottom = 15
+rotation_smoothing_enabled = true
+
+[node name="Killzone" parent="." instance=ExtResource("2_lnu2h")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(300, 113)
