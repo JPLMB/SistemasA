@@ -8,6 +8,7 @@
 [node name="Game" type="Node2D"]
 
 [node name="levelDebug" parent="." instance=ExtResource("1_yqjtg")]
+position = Vector2(62, -415)
 
 [node name="Killzone" parent="." instance=ExtResource("2_lnu2h")]
 light_mask = 2
@@ -15,7 +16,7 @@ visibility_layer = 2
 position = Vector2(300, 113)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-54, -159)
+position = Vector2(108, -40)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
