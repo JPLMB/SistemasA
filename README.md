@@ -9,4 +9,4 @@ Quatro plataformas, o megaman consegue pular de uma para outra. Reinicia a fase 
 
 Semana 3:
 
-HUD, Completar layout da fase.
+HUD, Completar layout da fase, disparo.
