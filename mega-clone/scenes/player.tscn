@@ -63,6 +63,11 @@ animations = [{
 "loop": true,
 "name": &"moving",
 "speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"shooting",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -76,4 +81,4 @@ shape = SubResource("CircleShape2D_4flbx")
 texture_filter = 1
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_dw050")
-animation = &"idle"
+animation = &"shooting"

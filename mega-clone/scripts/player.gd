@@ -7,6 +7,9 @@ const JUMP_VELOCITY = -400.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var life_bar: AnimatedSprite2D = $"../HUD/Control/BoxContainer/LifeBar"
 
+const BULLET = preload("uid://kxqyudxlx6d2")
+@export var shoot_offset := Vector2(20, -5)
+
 func _physics_process(delta: float) -> void:
 	
 	# DEBUG -----------------------------------------
@@ -16,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_heal"):
 		life_bar.heal(1)
 	# -----------------------------------------------
-
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -45,5 +47,25 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED * 0.5
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 	move_and_slide()
+
+func shoot():
+	var bullet = BULLET.instantiate()
+
+	# escolhe direção e ajusta o offset dependendo do lado
+	var offset = shoot_offset
+
+	if animated_sprite_2d.flip_h:
+		offset.x *= -1
+		bullet.direction = Vector2.LEFT
+	else:
+		bullet.direction = Vector2.RIGHT
+
+	bullet.position = global_position + offset
+
+	# adiciona bullet no mesmo nível do player (ou acima)
+	get_parent().add_child(bullet)
