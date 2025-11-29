@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2u18dri56uk5"]
+
+[ext_resource type="Texture2D" uid="uid://qw83xi8stsp7" path="res://icon.svg" id="1_0amxd"]
+[ext_resource type="Script" uid="uid://dm1mb51c5nk78" path="res://scripts/sniper_joe.gd" id="1_7mb66"]
+[ext_resource type="Texture2D" uid="uid://b5s1i8wf47bm6" path="res://icon2.svg" id="2_7mb66"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jah48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0amxd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7mb66")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4tvi1"]
+radius = 13.038404
+
+[node name="SniperJoe" type="CharacterBody2D"]
+script = ExtResource("1_7mb66")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_jah48")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4tvi1")
+
+[node name="shoot_timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="vulnerable_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
