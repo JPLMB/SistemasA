@@ -1,23 +1,43 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var life_bar: AnimatedSprite2D = $"../HUD/Control/BoxContainer/LifeBar"
 
+@export var max_health := 29
+var current_health := max_health
+
+signal health_changed(current: int, max: int)
+signal damaged(amount: int)
+signal healed(amount: int)
+
 const BULLET = preload("uid://kxqyudxlx6d2")
 @export var shoot_offset := Vector2(20, -5)
+
+func heal(amount: int):
+	current_health = clamp(current_health + amount, 0, max_health)
+	emit_signal("healed", amount)
+	emit_signal("health_changed", current_health, max_health)
+
+func take_damage(amount: int):
+	current_health = clamp(current_health - amount, 0, max_health)
+	emit_signal("damaged", amount)
+	emit_signal("health_changed", current_health, max_health)
+
+func _ready():
+	add_to_group("player")
+	emit_signal("health_changed", current_health, max_health)
 
 func _physics_process(delta: float) -> void:
 	
 	# DEBUG -----------------------------------------
 	if Input.is_action_just_pressed("debug_damage"):
-		life_bar.take_damage_animated(1)
+		take_damage(1)
 
 	if Input.is_action_just_pressed("debug_heal"):
-		life_bar.heal(1)
+		heal(1)
 	# -----------------------------------------------
 	
 	# Add the gravity.
