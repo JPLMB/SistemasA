@@ -26,8 +26,16 @@ func take_damage(amount: int):
 	emit_signal("damaged", amount)
 	emit_signal("health_changed", current_health, max_health)
 
+	if current_health <= 0:
+		die()
+
+func die():
+	print("Player morreu! Reiniciando...")
+	get_tree().call_deferred("reload_current_scene")
+
 func _ready():
 	add_to_group("player")
+	print("Player groups:", get_groups())
 	emit_signal("health_changed", current_health, max_health)
 
 func _physics_process(delta: float) -> void:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://mxsuarg80afs"]
+[gd_scene load_steps=7 format=3 uid="uid://mxsuarg80afs"]
 
 [ext_resource type="PackedScene" uid="uid://oeb4yieu2akt" path="res://scenes/LifeBar.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://u6jykpg53s1i" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cnm7yd3m0pkba" path="res://scenes/level.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bewovneey72g7" path="res://scenes/killzone.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cjl7vktlpsq0g" path="res://scenes/npc.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://k6ebtgdrq45l" path="res://scenes/missile.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 
@@ -17,7 +18,7 @@ visibility_layer = 2
 position = Vector2(300, 113)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(108, -40)
+position = Vector2(110, -36)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -46,4 +47,87 @@ position = Vector2(65, 126.00001)
 scale = Vector2(3, 3)
 
 [node name="npc" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(266, -90)
+position = Vector2(475, -222)
+direction_change_time = 2.6
+
+[node name="missile" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(1054, -243)
+
+[node name="missile2" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(608, -64)
+
+[node name="missile3" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(1282, -244)
+
+[node name="missile4" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(1484, -242)
+
+[node name="missile5" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2289, -383)
+
+[node name="missile6" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2289, -306)
+
+[node name="missile7" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2289, -231)
+
+[node name="missile8" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2288, -159)
+
+[node name="missile9" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2287, -88)
+
+[node name="missile10" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(1692, -237)
+
+[node name="missile11" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(775, -118)
+
+[node name="missile12" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(3762, -97)
+
+[node name="missile13" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(3763, -184)
+
+[node name="missile14" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(3763, -273)
+
+[node name="missile15" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(3765, -357)
+
+[node name="missile16" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(3765, -439)
+
+[node name="missile17" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(4815, -552)
+
+[node name="npc2" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(687, -399)
+
+[node name="npc3" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(719, -655)
+direction_change_time = 6.0
+
+[node name="npc4" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(1535, -511)
+direction_change_time = 3.7
+
+[node name="npc5" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(1242, -111)
+direction_change_time = 4.0
+
+[node name="npc6" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(1165, -447)
+direction_change_time = 1.25
+
+[node name="missile18" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(3148, -630)
+
+[node name="missile19" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(4065, -630)
+
+[node name="missile20" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(5166, -634)
+
+[node name="missile21" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(5843, -636)

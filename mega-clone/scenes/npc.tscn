@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjl7vktlpsq0g"]
 
 [ext_resource type="Script" uid="uid://btu8cl84jdtkx" path="res://scenes/npc.gd" id="1_nh2m4"]
-[ext_resource type="Texture2D" uid="uid://qw83xi8stsp7" path="res://icon.svg" id="2_abqhh"]
+[ext_resource type="Texture2D" uid="uid://cipnk4765d4or" path="res://sprites/large_enemy.png" id="2_abqhh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_abqhh"]
 animations = [{
@@ -15,21 +15,30 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rv78h"]
+radius = 26.305893
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7n8xq"]
-radius = 19.104973
+radius = 21.095022
 
 [node name="npc" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_nh2m4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_abqhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_rv78h")
+disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7n8xq")
+
+[node name="DirectionTimer" type="Timer" parent="Area2D"]
+wait_time = 2.0
+autostart = true

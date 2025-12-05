@@ -3,6 +3,9 @@ extends Area2D
 @export var speed := 600.0
 var direction := Vector2.RIGHT  # Será configurada ao instanciar
 
+func _ready():
+	add_to_group("bullet")
+
 func _physics_process(delta):
 	position += direction * speed * delta * 0.7
 
