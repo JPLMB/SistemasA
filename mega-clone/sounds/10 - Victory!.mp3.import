@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhon4glf6n6mo"
+path="res://.godot/imported/10 - Victory!.mp3-58f5bbb58b898b69d4f58a8fa25bce76.mp3str"
+
+[deps]
+
+source_file="res://sounds/10 - Victory!.mp3"
+dest_files=["res://.godot/imported/10 - Victory!.mp3-58f5bbb58b898b69d4f58a8fa25bce76.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

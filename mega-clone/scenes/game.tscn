@@ -20,7 +20,7 @@ visibility_layer = 2
 position = Vector2(300, 113)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(2118, -510)
+position = Vector2(109, -34)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -134,10 +134,6 @@ position = Vector2(5166, -634)
 [node name="missile21" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(5843, -636)
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_u5sy4")
-autoplay = true
-
 [node name="Boss" parent="." instance=ExtResource("8_gee14")]
 position = Vector2(2392, -223)
 
@@ -158,3 +154,7 @@ position = Vector2(5847, -427)
 
 [node name="missile27" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(6456, -647)
+
+[node name="BGM" type="AudioStreamPlayer" parent="." groups=["music"]]
+stream = ExtResource("7_u5sy4")
+autoplay = true

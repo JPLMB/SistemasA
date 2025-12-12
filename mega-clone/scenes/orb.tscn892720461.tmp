@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0qgxtfih3qbo"]
+[gd_scene load_steps=4 format=3 uid="uid://c0qgxtfih3qbo"]
 
 [ext_resource type="Texture2D" uid="uid://dr6rvci3bvqlh" path="res://sprites/orb.png" id="1_ktqa0"]
 [ext_resource type="Script" uid="uid://cdcv3p2jsjy4v" path="res://scripts/orb.gd" id="1_ubfm6"]
-[ext_resource type="AudioStream" uid="uid://bhon4glf6n6mo" path="res://sounds/10 - Victory!.mp3" id="2_g6cbt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1j06i"]
 radius = 9.055386
@@ -11,13 +10,10 @@ radius = 9.055386
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ubfm6")
-victory_music = ExtResource("2_g6cbt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_ktqa0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 3
-visibility_layer = 3
 shape = SubResource("CircleShape2D_1j06i")
