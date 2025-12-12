@@ -9,6 +9,9 @@ const JUMP_VELOCITY = -400.0
 @export var max_health := 29
 var current_health := max_health
 
+@export var coyote_time := 0.1
+var coyote_timer := 0.0
+
 signal health_changed(current: int, max: int)
 signal damaged(amount: int)
 signal healed(amount: int)
@@ -48,13 +51,20 @@ func _physics_process(delta: float) -> void:
 		heal(1)
 	# -----------------------------------------------
 	
+	# Atualiza coyote time
+	if is_on_floor():
+		coyote_timer = coyote_time
+	else:
+		coyote_timer -= delta
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and coyote_timer > 0.0:
 		velocity.y = JUMP_VELOCITY
+		coyote_timer = 0.0
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
