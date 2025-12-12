@@ -10,6 +10,23 @@ var direction := -1
 @onready var hitbox: Area2D = $Area2D
 @onready var direction_timer: Timer = null
 
+@export var sfx_hit: AudioStream
+
+func _spawn_sfx(stream: AudioStream):
+	if stream == null:
+		return
+	
+	var temp := AudioStreamPlayer2D.new()
+	temp.stream = stream
+	temp.global_position = global_position
+	temp.bus = "SFX"
+	temp.top_level = true
+
+	get_tree().current_scene.add_child(temp)
+
+	temp.play()
+	temp.connect("finished", temp.queue_free)
+
 func _ready():
 	hitbox.body_entered.connect(_on_body_entered)
 	hitbox.area_entered.connect(_on_area_entered)
@@ -47,6 +64,7 @@ func _on_area_entered(area):
 		area.queue_free()
 
 func take_damage():
+	_spawn_sfx(sfx_hit)
 	health -= 1
 	if health <= 0:
 		die()

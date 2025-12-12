@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -400.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var life_bar: AnimatedSprite2D = $"../HUD/Control/BoxContainer/LifeBar"
+@onready var sfx: AudioStreamPlayer2D = $SFX
 
 @export var max_health := 29
 var current_health := max_health
@@ -19,12 +20,26 @@ signal healed(amount: int)
 const BULLET = preload("uid://kxqyudxlx6d2")
 @export var shoot_offset := Vector2(20, -5)
 
+@export var sfx_jump: AudioStream
+@export var sfx_shoot: AudioStream
+@export var sfx_damage: AudioStream
+@export var sfx_die: AudioStream
+
+var was_on_floor := false
+
+func _play_sfx(stream: AudioStream):
+	if stream == null:
+		return
+	sfx.stream = stream
+	sfx.play()
+
 func heal(amount: int):
 	current_health = clamp(current_health + amount, 0, max_health)
 	emit_signal("healed", amount)
 	emit_signal("health_changed", current_health, max_health)
 
 func take_damage(amount: int):
+	_play_sfx(sfx_damage)
 	current_health = clamp(current_health - amount, 0, max_health)
 	emit_signal("damaged", amount)
 	emit_signal("health_changed", current_health, max_health)
@@ -33,8 +48,27 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	print("Player morreu! Reiniciando...")
-	get_tree().call_deferred("reload_current_scene")
+	print("Player morreu!")
+
+	_play_sfx(sfx_die)
+
+	set_physics_process(false)
+	set_process(false)
+
+	var sprite := $AnimatedSprite2D
+
+	# Piscar estilo Mega Man NES
+	for i in range(4):
+		sprite.visible = false
+		await get_tree().create_timer(0.1).timeout
+		sprite.visible = true
+		await get_tree().create_timer(0.1).timeout
+
+	# Desaparece de vez
+	sprite.visible = false
+
+	await get_tree().create_timer(0.5).timeout
+	get_tree().reload_current_scene()
 
 func _ready():
 	add_to_group("player")
@@ -90,8 +124,15 @@ func _physics_process(delta: float) -> void:
 		shoot()
 
 	move_and_slide()
+	
+	# --- SFX do Mega Man: som ao aterrissar ---
+	var on_floor_now = is_on_floor()
+	if on_floor_now and not was_on_floor:
+		_play_sfx(sfx_jump)
+	was_on_floor = on_floor_now
 
 func shoot():
+	_play_sfx(sfx_shoot)
 	var bullet = BULLET.instantiate()
 
 	# escolhe direção e ajusta o offset dependendo do lado
