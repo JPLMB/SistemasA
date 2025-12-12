@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtgxaio1yvq6j"]
+
+[ext_resource type="Script" uid="uid://b1xmekendyykq" path="res://scripts/title_screen.gd" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://bwvj7rergsxcs" path="res://sprites/title_screen.png" id="2_sa3yf"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fgkus")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+texture_filter = 1
+offset_top = 1.0
+offset_bottom = 1.0
+scale = Vector2(4.4882813, 2.7)
+texture = ExtResource("2_sa3yf")

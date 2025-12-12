@@ -57,7 +57,7 @@ func die():
 
 	var sprite := $AnimatedSprite2D
 
-	# Piscar estilo Mega Man NES
+	# Piscar
 	for i in range(4):
 		sprite.visible = false
 		await get_tree().create_timer(0.1).timeout
@@ -78,11 +78,11 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	
 	# DEBUG -----------------------------------------
-	if Input.is_action_just_pressed("debug_damage"):
-		take_damage(1)
+	#if Input.is_action_just_pressed("debug_damage"):
+	#	take_damage(1)
 
-	if Input.is_action_just_pressed("debug_heal"):
-		heal(1)
+	#if Input.is_action_just_pressed("debug_heal"):
+	#	heal(1)
 	# -----------------------------------------------
 	
 	# Atualiza coyote time
