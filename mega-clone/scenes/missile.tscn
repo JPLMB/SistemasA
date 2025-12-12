@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://k6ebtgdrq45l"]
+[gd_scene load_steps=7 format=3 uid="uid://k6ebtgdrq45l"]
 
 [ext_resource type="Script" uid="uid://4b875a4cb0iv" path="res://scripts/missile.gd" id="1_np454"]
 [ext_resource type="Texture2D" uid="uid://bgdihg8lq2usv" path="res://sprites/missil.png" id="2_6cx5e"]
+[ext_resource type="AudioStream" uid="uid://cdx78we3p58xk" path="res://sounds/13 - Explosion.wav" id="2_35udt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_np454"]
 animations = [{
@@ -23,6 +24,7 @@ radius = 14.035668
 [node name="missile" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_np454")
+sfx_hit = ExtResource("2_35udt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
