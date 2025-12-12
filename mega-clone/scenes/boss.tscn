@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://b80nxganf2y58"]
+
+[ext_resource type="Script" uid="uid://btu8cl84jdtkx" path="res://scenes/npc.gd" id="1_jncid"]
+[ext_resource type="AudioStream" uid="uid://cil7jo0q32g8l" path="res://sounds/09 - EnemyDamage.wav" id="2_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://d3wpd6473fsqr" path="res://sprites/gutsman.png" id="3_jncid"]
+[ext_resource type="AudioStream" uid="uid://cdx78we3p58xk" path="res://sounds/13 - Explosion.wav" id="3_r3bxh"]
+[ext_resource type="PackedScene" uid="uid://c0qgxtfih3qbo" path="res://scenes/orb.tscn" id="4_wqpjq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_abqhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jncid")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rv78h"]
+radius = 16.492422
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7n8xq"]
+radius = 16.492422
+
+[node name="Boss" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_jncid")
+sfx_hit = ExtResource("2_qnbj4")
+sfx_die = ExtResource("3_r3bxh")
+orb_scene = ExtResource("4_wqpjq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_abqhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rv78h")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7n8xq")

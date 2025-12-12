@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mxsuarg80afs"]
+[gd_scene load_steps=9 format=3 uid="uid://mxsuarg80afs"]
 
 [ext_resource type="PackedScene" uid="uid://oeb4yieu2akt" path="res://scenes/LifeBar.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://u6jykpg53s1i" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjl7vktlpsq0g" path="res://scenes/npc.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://k6ebtgdrq45l" path="res://scenes/missile.tscn" id="6_p57ef"]
 [ext_resource type="AudioStream" uid="uid://bldj07wtjdx2w" path="res://sounds/BGM.mp3" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://b80nxganf2y58" path="res://scenes/boss.tscn" id="8_gee14"]
 
 [node name="Game" type="Node2D"]
 
@@ -19,7 +20,7 @@ visibility_layer = 2
 position = Vector2(300, 113)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(114, -35)
+position = Vector2(2118, -510)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -49,6 +50,7 @@ scale = Vector2(3, 3)
 
 [node name="npc" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(475, -222)
+direction_change_time = 3.1
 
 [node name="missile" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(1054, -243)
@@ -106,15 +108,19 @@ position = Vector2(687, -399)
 
 [node name="npc3" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(719, -655)
+direction_change_time = 5.75
 
 [node name="npc4" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(1535, -511)
+direction_change_time = 3.5
 
 [node name="npc5" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(1242, -111)
+direction_change_time = 4.0
 
 [node name="npc6" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(1165, -447)
+direction_change_time = 1.25
 
 [node name="missile18" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(3148, -630)
@@ -131,3 +137,24 @@ position = Vector2(5843, -636)
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_u5sy4")
 autoplay = true
+
+[node name="Boss" parent="." instance=ExtResource("8_gee14")]
+position = Vector2(2392, -223)
+
+[node name="missile22" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(5844, -85)
+
+[node name="missile23" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(5845, -172)
+
+[node name="missile24" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(5845, -261)
+
+[node name="missile25" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(5847, -345)
+
+[node name="missile26" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(5847, -427)
+
+[node name="missile27" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(6456, -647)

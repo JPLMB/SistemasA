@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cjl7vktlpsq0g"]
 
-[ext_resource type="Script" uid="uid://btu8cl84jdtkx" path="res://scenes/npc.gd" id="1_nh2m4"]
+[ext_resource type="Script" uid="uid://jrd63rngleai" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://cipnk4765d4or" path="res://sprites/large_enemy.png" id="2_abqhh"]
 [ext_resource type="AudioStream" uid="uid://cil7jo0q32g8l" path="res://sounds/09 - EnemyDamage.wav" id="2_rv78h"]
 
@@ -23,7 +23,7 @@ radius = 21.095022
 
 [node name="npc" type="CharacterBody2D"]
 collision_mask = 3
-script = ExtResource("1_nh2m4")
+script = ExtResource("1_abqhh")
 sfx_hit = ExtResource("2_rv78h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
